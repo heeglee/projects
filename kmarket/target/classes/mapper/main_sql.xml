@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main_sql">
+
+	<select id="SELECT_HIT" resultType="kr.co.kmarket.vo.ProductsVO">
+		SELECT *, Floor(kp_item_price*(1-kp_item_discount/100)) AS kp_item_dc_price 
+		FROM km_products 
+		ORDER BY kp_item_sale_count DESC 
+		LIMIT 8;
+	</select>
+	
+	<select id="SELECT_RECOMMEND" resultType="kr.co.kmarket.vo.ProductsVO">
+		SELECT *, Floor(kp_item_price*(1-kp_item_discount/100)) AS kp_item_dc_price 
+		FROM km_products 
+		ORDER BY RAND() 
+		LIMIT 8;
+	</select>
+	
+	<select id="SELECT_LATEST" resultType="kr.co.kmarket.vo.ProductsVO">
+		SELECT *, Floor(kp_item_price*(1-kp_item_discount/100)) AS kp_item_dc_price 
+		FROM km_products 
+		ORDER BY kp_item_rdate DESC
+		LIMIT 8;
+	</select>
+	
+	<select id="SELECT_DISCOUNT" resultType="kr.co.kmarket.vo.ProductsVO">
+		SELECT *, Floor(kp_item_price*(1-kp_item_discount/100)) AS kp_item_dc_price 
+		FROM km_products 
+		ORDER BY kp_item_discount DESC 
+		LIMIT 8;
+	</select>
+	
+		
+</mapper>
+
+
+
+

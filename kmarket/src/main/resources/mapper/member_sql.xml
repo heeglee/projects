@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member_sql">
+	<select id="SELECT_TERMS" resultType="kr.co.kmarket.member.vo.MemberTermsVO">
+		SELECT * FROM km_member_terms;	
+	</select>
+	<insert id="INSERT_MEMBER">
+		INSERT INTO km_member SET
+			km_uid=#{km_uid},
+			km_pass=PASSWORD(#{km_pass}),
+			km_name=#{km_name},
+			km_gender=#{km_gender},
+			km_hp=#{km_hp},
+			km_email=#{km_email},
+			km_zip=#{km_zip},
+			km_addr1=#{km_addr1},
+			km_addr2=#{km_addr2},
+			km_ip=#{km_ip},
+			km_rdate=NOW();
+	</insert>
+	<insert id="INSERT_MEMBER_SELLER">
+		
+		INSERT INTO km_member SET 
+			km_uid=#{km_uid},
+			km_pass=PASSWORD(#{km_pass}),
+			km_name=#{km_name},
+			km_hp=#{km_hp},
+			km_email=#{kms_email},
+			km_grade=6,
+			km_zip=#{kms_zip},
+			km_addr1=#{kms_addr1},
+			km_addr2=#{kms_addr2},
+			km_ip=#{kms_ip},
+			km_rdate=NOW();
+		
+		INSERT INTO km_member_seller SET
+			kms_sid=#{km_uid},
+			kms_grade=6,			
+			kms_company=#{kms_company},
+			kms_ceo=#{kms_ceo},
+			kms_tel=#{kms_tel},
+			kms_fax=#{kms_fax},
+			kms_email=#{kms_email},
+			kms_corp_reg=#{kms_corp_reg},
+			kms_online_reg=#{kms_online_reg},
+			kms_zip=#{kms_zip},
+			kms_addr1=#{kms_addr1},
+			kms_addr2=#{kms_addr2},
+			kms_ip=#{kms_ip},
+			kms_rdate=NOW();
+	
+	</insert>
+		
+</mapper>
+
+
+
+
